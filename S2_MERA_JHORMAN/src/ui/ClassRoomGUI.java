@@ -164,7 +164,7 @@ public class ClassRoomGUI {
 	@FXML
 	public void CreateAnAccount(ActionEvent event) throws IOException {
 		String career="";
-		var gender1= "";
+		String gender1= "";
 		if(softwareCareer.isSelected()) {
 			career="Software Engineering";
 		}else if(telematicCareer.isSelected()) {
@@ -179,29 +179,37 @@ public class ClassRoomGUI {
 		}else if(Other.isSelected()) {
 			gender1="Other";
 		}
-		if (userVerification(txtRegUsername.getText())==null) { 
-			File f = new File(txtRegProfilePhoto.getText());
-			Image img = new Image(f.toURI().toString());
-			this.classRoom.addUserAccount(
-				txtRegUsername.getText(), 
-				txtRegPassword.getText(), 
-				img, 
-				gender1, 
-				career,
-				DpBirthday.getValue().toString(),
-				choiceBrowser.getSelectionModel().getSelectedItem().toString());
+		File f = new File(txtRegProfilePhoto.getText());
+		Image img = new Image(f.toURI().toString());
+		if(career != "" && gender1 != "" && txtRegUsername.getText() != "" && txtRegPassword.getText()!="" && img !=null && DpBirthday.getValue().toString() != "" && choiceBrowser.getSelectionModel().getSelectedItem().toString() != "" ) {			
+			if (userVerification(txtRegUsername.getText())==null) { 				
+				this.classRoom.addUserAccount(
+						txtRegUsername.getText(), 
+						txtRegPassword.getText(), 
+						img, 
+						gender1, 
+						career,
+						DpBirthday.getValue().toString(),
+						choiceBrowser.getSelectionModel().getSelectedItem().toString());
 				showLogin();
-		}else {
+			}else {
+				Alert alert = new Alert(AlertType.WARNING);
+				alert.setTitle("Warning Dialog");
+				alert.setHeaderText("Error");
+				alert.setContentText("El nombre de usuario no está disponible");
+				alert.showAndWait();
+			}
+		} else {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Warning Dialog");
 			alert.setHeaderText("Error");
-			alert.setContentText("El nombre de usuario no está disponible");
+			alert.setContentText("Todos los campos deben estar llenos");
 			alert.showAndWait();
 		}
 	}
 	@FXML
 	public void Login(ActionEvent event) throws IOException {		
-		if (loginVerification(txtUserName.getText(),txtPassword.getText())!=null) {			
+		if (txtUserName.getText()!= "" && txtPassword.getText()!="" && loginVerification(txtUserName.getText(),txtPassword.getText())!=null) {			
 			UserAccount user = loginVerification(txtUserName.getText(),txtPassword.getText());
 			FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("account-list.fxml"));
 			fxmlloader.setController(this);
@@ -227,12 +235,12 @@ public class ClassRoomGUI {
 		String user = userName;	
 		String pass = password;
 		boolean found = false;
-		for (int i=0; i<classRoom.getAccounts().size() && !found;i++) {
-			if (classRoom.getAccounts().get(i).getUsername().equals(user) && classRoom.getAccounts().get(i).getPassword().equals(pass)) {
-			exists = classRoom.getAccounts().get(i);
-			found = true;
+			for (int i=0; i<classRoom.getAccounts().size() && !found;i++) {
+				if (classRoom.getAccounts().get(i).getUsername().equals(user) && classRoom.getAccounts().get(i).getPassword().equals(pass)) {
+					exists = classRoom.getAccounts().get(i);
+					found = true;
+				}
 			}
-		}
 		return exists;
 	}
 	

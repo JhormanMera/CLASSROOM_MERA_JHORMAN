@@ -11,7 +11,7 @@ public class ClassRoom {
 	private List<UserAccount> Accounts;
 	
 	public ClassRoom() {
-		Accounts=new ArrayList<>();
+		Accounts= new ArrayList<>();
 	}
 	
 	public void addUserAccount(String user, String pass, Image photo, String gender, String career, String birth, String browser) {		
