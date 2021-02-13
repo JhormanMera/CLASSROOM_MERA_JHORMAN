@@ -8,10 +8,11 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="431.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label alignment="CENTER" layoutX="143.0" layoutY="9.0" prefHeight="27.0" prefWidth="174.0" text="Join to classroom">
          <font>
@@ -44,26 +45,26 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="43.0" layoutY="221.0" text="Career">
+      <Label layoutX="43.0" layoutY="240.0" text="Career">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="39.0" layoutY="279.0" text="Birthday">
+      <Label layoutX="39.0" layoutY="302.0" text="Birthday">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="39.0" layoutY="316.0" text="Favorite browser">
+      <Label layoutX="39.0" layoutY="339.0" text="Favorite browser">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button layoutX="86.0" layoutY="344.0" mnemonicParsing="false" onAction="#SignIn" prefHeight="35.0" prefWidth="118.0" text="Sign In">
+      <Button layoutX="88.0" layoutY="379.0" mnemonicParsing="false" onAction="#SignIn" prefHeight="35.0" prefWidth="118.0" text="Sign In">
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Button>
-      <Button layoutX="244.0" layoutY="344.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="138.0" text="Create an account">
+      <Button layoutX="246.0" layoutY="379.0" mnemonicParsing="false" onAction="#CreateAnAccount" prefHeight="35.0" prefWidth="138.0" text="Create an account">
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Button>
@@ -71,15 +72,18 @@
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Button>
-      <RadioButton layoutX="139.0" layoutY="195.0" mnemonicParsing="false" onAction="#genderMale" text="Male" />
-      <RadioButton layoutX="201.0" layoutY="195.0" mnemonicParsing="false" onAction="#genderFemale" text="Female" />
-      <RadioButton layoutX="275.0" layoutY="195.0" mnemonicParsing="false" onAction="#genderOther" text="Other" />
-      <CheckBox layoutX="143.0" layoutY="221.0" mnemonicParsing="false" onAction="#softwareCareer" text="Software Engineering" />
-      <CheckBox layoutX="143.0" layoutY="238.0" mnemonicParsing="false" onAction="#TelematicCareer" text="Telematic Engineering" />
-      <CheckBox layoutX="143.0" layoutY="255.0" mnemonicParsing="false" onAction="#industrialCareer" text="Industrial Engineering" />
-      <ChoiceBox layoutX="147.0" layoutY="312.0" prefWidth="150.0" />
-      <DatePicker layoutX="143.0" layoutY="275.0" />
+      <RadioButton fx:id="Male" layoutX="139.0" layoutY="195.0" mnemonicParsing="false" text="Male">
+         <toggleGroup>
+            <ToggleGroup fx:id="genderGroup" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="Female" layoutX="201.0" layoutY="195.0" mnemonicParsing="false" text="Female" toggleGroup="$genderGroup" />
+      <RadioButton fx:id="Other" layoutX="275.0" layoutY="195.0" mnemonicParsing="false" text="Other" toggleGroup="$genderGroup" />
+      <ChoiceBox fx:id="choiceBrowser" layoutX="147.0" layoutY="336.0" prefWidth="150.0" />
+      <DatePicker fx:id="DpBirthday" layoutX="143.0" layoutY="300.0" />
       <PasswordField fx:id="txtRegPassword" layoutX="156.0" layoutY="106.0" />
-      <TextField fx:id="txtRegProfilePhoto" layoutX="156.0" layoutY="155.0" />
+      <TextField fx:id="txtRegProfilePhoto" editable="false" layoutX="156.0" layoutY="155.0" />
+      <CheckBox fx:id="softwareCareer" layoutX="139.0" layoutY="242.0" mnemonicParsing="false" text="Software Engineering" />
+      <CheckBox fx:id="telematicCareer" layoutX="139.0" layoutY="260.0" mnemonicParsing="false" text="Telematic Engineering" />
+      <CheckBox fx:id="industrialCareer" layoutX="139.0" layoutY="277.0" mnemonicParsing="false" text="Industrial Engineering" />
    </children>
 </Pane>

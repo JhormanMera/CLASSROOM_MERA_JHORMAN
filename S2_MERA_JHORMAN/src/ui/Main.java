@@ -22,16 +22,16 @@ public class Main extends Application{
     public static void main(String[] args){
         launch(args);
     }
-
     @Override
     public void start(Stage primaryStage) throws Exception{
-    	FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("login.fxml"));
+    	FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("main-pane.fxml"));
         fxmlloader.setController(classRoomGUI);
         Parent root = fxmlloader.load();
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.setTitle("ClassRoom");
         primaryStage.show();
-
+        this.classRoomGUI.showLogin();
     }
+
 }
