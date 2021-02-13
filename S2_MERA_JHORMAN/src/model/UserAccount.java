@@ -1,5 +1,6 @@
 package model;
 
+import javafx.scene.image.Image;
 
 public class UserAccount {
 	
@@ -9,9 +10,9 @@ public class UserAccount {
 	private String career;
 	private String birthday;
 	private String browser;
-	private String photo;
+	private Image photo;
 	
-	public UserAccount(String user, String pass, String photo, String gender, String career, String birth, String browser) {
+	public UserAccount(String user, String pass, Image photo, String gender, String career, String birth, String browser) {
 		this.username=user;
 		this.password=pass;
 		this.photo = photo;
@@ -38,7 +39,7 @@ public class UserAccount {
 	public String getBrowser() {
 		return browser;
 	}
-	public String getPhoto() {
+	public Image getPhoto() {
 		return photo;
 	}
 	

@@ -179,12 +179,13 @@ public class ClassRoomGUI {
 		}else if(Other.isSelected()) {
 			gender1="Other";
 		}
-		
 		if (userVerification(txtRegUsername.getText())==null) { 
+			File f = new File(txtRegProfilePhoto.getText());
+			Image img = new Image(f.toURI().toString());
 			this.classRoom.addUserAccount(
 				txtRegUsername.getText(), 
 				txtRegPassword.getText(), 
-				txtRegProfilePhoto.getText().toString(), 
+				img, 
 				gender1, 
 				career,
 				DpBirthday.getValue().toString(),
@@ -211,6 +212,7 @@ public class ClassRoomGUI {
 			txtPassword.setText("");
 			initializableTableView();			
 			this.UsernameAccount.setText(user.getUsername());
+			this.showProfileImage.setImage(user.getPhoto());
 		}else {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Warning Dialog");

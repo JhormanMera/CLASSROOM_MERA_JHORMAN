@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.scene.image.Image;
+
 
 public class ClassRoom {
 	
@@ -12,7 +14,7 @@ public class ClassRoom {
 		Accounts=new ArrayList<>();
 	}
 	
-	public void addUserAccount(String user, String pass, String photo, String gender, String career, String birth, String browser) {		
+	public void addUserAccount(String user, String pass, Image photo, String gender, String career, String birth, String browser) {		
 		Accounts.add(new UserAccount(user, pass, photo, gender, career, birth, browser));
 		
 	}
